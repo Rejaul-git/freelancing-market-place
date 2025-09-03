@@ -1,0 +1,95 @@
+.gigs {
+  width: 100%;
+  padding: 20px 0;
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    .breadcrumbs {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .error {
+      color: #e74c3c;
+      background-color: #fdf2f2;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #f5c6cb;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      font-size: 18px;
+      color: #666;
+    }
+
+    .no-gigs {
+      text-align: center;
+      padding: 40px;
+      font-size: 18px;
+      color: #666;
+    }
+
+    .gigs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+
+      .link {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .gigs {
+    .container {
+      padding: 0 15px;
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .gigs-list {
+        gap: 15px;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .gigs {
+    .container {
+      h1 {
+        font-size: 20px;
+      }
+
+      .gigs-list {
+        gap: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,276 @@
+.featured {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  background-color: #013914;
+  color: white;
+
+  .container {
+    width: 1400px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      h1 {
+        font-size: 50px;
+
+        span {
+          font-style: italic;
+          font-weight: 300;
+        }
+      }
+
+      .search {
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+
+        .searchInput {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 20px;
+            height: 20px;
+            margin: 10px;
+          }
+
+          input {
+            border: none;
+            outline: none;
+
+            &::placeholder {
+              color: gray;
+            }
+          }
+        }
+
+        button {
+          width: 120px;
+          height: 50px;
+          border: none;
+          background-color: #1dbf73;
+          color: white;
+          align-self: flex-end;
+          cursor: pointer;
+        }
+      }
+
+      .popular {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        span {
+          width: max-content;
+        }
+
+        button {
+          width: max-content;
+          color: white;
+          border: 1px solid white;
+          padding: 5px 10px;
+          border-radius: 20px;
+          background-color: transparent;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .right {
+      height: 110%;
+      img {
+        height: 100%;
+        object-fit: contain;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  .suggestions {
+    position: absolute;
+    top: 64%;
+    left: 90px;
+    right: 580px;
+    opacity: 100%; // Adjusted for search button width
+    background-color: white;
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+    margin-top: 5px;
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      img {
+        width: 50px;
+        height: 70px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 5px;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+// add extar css---------------------------------------------
+
+// .featured {
+//   height: 600px;
+//   display: flex;
+//   justify-content: center;
+//   background-color: #013914;
+//   color: white;
+
+//   .container {
+//     width: 1400px;
+//     display: flex;
+//     align-items: center;
+
+//     .left {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 30px;
+
+//       h1 {
+//         font-size: 50px;
+
+//         i {
+//           font-weight: 300;
+//         }
+//       }
+
+//       .search {
+//         background-color: white;
+//         border-radius: 5px;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         overflow: hidden;
+
+//         width: 100%;
+
+//         .searchInput {
+//           display: flex;
+//           align-items: center;
+//           gap: 10px;
+//           padding: 10px;
+
+//           input {
+//             border: none;
+//             outline: none;
+//           }
+//         }
+
+//         button {
+//           width: 120px;
+//           height: 50px;
+//           border: none;
+//           background-color: #1dbf73;
+//           color: white;
+//           align-self: flex-end;
+//           cursor: pointer;
+//         }
+//       }
+
+//       .popular {
+//         display: flex;
+//         align-items: center;
+//         gap: 10px;
+
+//         span {
+//           width: max-content;
+//         }
+
+//         button {
+//           width: max-content;
+//           color: white;
+//           background-color: transparent;
+//           border: 1px solid white;
+//           border-radius: 20px;
+//           padding: 5px 10px;
+//           font-size: 14px;
+//           cursor: pointer;
+//         }
+//       }
+//     }
+
+//     .right {
+//       height: 100%;
+//       img {
+//         height: 100%;
+//         object-fit: contain;
+//       }
+//     }
+//   }
+
+//   // 🔽 Responsive Design
+//   @media (max-width: 1024px) {
+//     .container {
+//       flex-direction: column;
+//       text-align: center;
+//       padding: 20px;
+
+//       .left {
+//         align-items: center;
+
+//         h1 {
+//           font-size: 36px;
+//         }
+
+//         .search {
+//           flex-direction: column;
+//           button {
+//             width: 100%;
+//           }
+//         }
+//       }
+
+//       .right {
+//         display: none;
+//       }
+//     }
+//   }
+
+//   @media (max-width: 480px) {
+//     .container {
+//       .left {
+//         h1 {
+//           font-size: 28px;
+//         }
+
+//         .popular {
+//           flex-wrap: wrap;
+//           justify-content: center;
+//         }
+//       }
+//     }
+//   }
+// }

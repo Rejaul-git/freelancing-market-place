@@ -1,0 +1,235 @@
+.payment-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.payment-form {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  .payment-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+
+    h2 {
+      margin: 0;
+      color: #333;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  .order-summary {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+
+    h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .gig-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+
+      img {
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 15px;
+      }
+
+      .gig-details {
+        h4 {
+          margin: 0 0 5px 0;
+          font-size: 16px;
+          color: #333;
+        }
+
+        p {
+          margin: 0;
+          color: #666;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .price-details {
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 14px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &.total {
+          font-weight: bold;
+          font-size: 16px;
+          border-top: 1px solid #eee;
+          padding-top: 10px;
+          margin-top: 10px;
+        }
+
+        span:last-child {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .payment-details {
+    padding: 20px;
+
+    h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: #0066ff;
+          box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.2);
+        }
+      }
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+
+      .form-group {
+        flex: 1;
+      }
+    }
+
+    .error-message {
+      color: #e74c3c;
+      background-color: #fdf2f2;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+
+      button {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &.cancel-btn {
+          background-color: #f1f1f1;
+          color: #333;
+
+          &:hover {
+            background-color: #e1e1e1;
+          }
+
+          &:disabled {
+            background-color: #f1f1f1;
+            cursor: not-allowed;
+            opacity: 0.6;
+          }
+        }
+
+        &.pay-btn {
+          background-color: #0066ff;
+          color: white;
+
+          &:hover:not(:disabled) {
+            background-color: #0052cc;
+          }
+
+          &:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .payment-form {
+    width: 95%;
+    margin: 10px;
+
+    .payment-details {
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    .form-actions {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+.reviewOrder {
+  padding: 20px 0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    
+    h1 {
+      color: #333;
+    }
+    
+    .backBtn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      
+      &:hover {
+        background: #0056b3;
+      }
+    }
+  }
+
+  .orderInfo {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    
+    .gigInfo {
+      display: flex;
+      align-items: center;
+      
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 20px;
+      }
+      
+      h2 {
+        margin: 0 0 10px 0;
+        color: #333;
+      }
+      
+      p {
+        margin: 5px 0;
+        color: #666;
+      }
+    }
+  }
+
+  .reviewForm {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    
+    .formGroup {
+      margin-bottom: 20px;
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: inherit;
+        resize: vertical;
+      }
+    }
+    
+    .ratingStars {
+      display: flex;
+      gap: 5px;
+      
+      .star {
+        font-size: 30px;
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s;
+        
+        &.filled {
+          color: #ffc107;
+        }
+      }
+    }
+    
+    .submitBtn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      
+      &:hover:not(:disabled) {
+        background: #218838;
+      }
+      
+      &:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

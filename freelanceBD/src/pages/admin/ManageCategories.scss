@@ -1,0 +1,394 @@
+.manageCategories {
+  padding: 20px;
+  font-family: "Roboto", sans-serif;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+
+    .header-content {
+      h1 {
+        margin: 0;
+        color: #333;
+        font-size: 28px;
+      }
+
+      p {
+        margin: 5px 0 0;
+        color: #666;
+      }
+    }
+
+    .add-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #0056b3;
+      }
+    }
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+
+    .search-box {
+      flex: 1;
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+        }
+      }
+    }
+
+    .status-filter {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      background: white;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+    }
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal {
+      background: white;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+
+        h2 {
+          margin: 0;
+          color: #333;
+        }
+
+        .close-btn {
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          color: #999;
+
+          &:hover {
+            color: #333;
+          }
+        }
+      }
+
+      form {
+        padding: 20px;
+
+        .form-group {
+          margin-bottom: 20px;
+
+          label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+          }
+
+          input,
+          textarea,
+          select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+
+            &:focus {
+              outline: none;
+              border-color: #007bff;
+            }
+          }
+
+          textarea {
+            resize: vertical;
+            min-height: 80px;
+          }
+
+          .image-preview {
+            margin-top: 10px;
+
+            img {
+              max-width: 200px;
+              max-height: 200px;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+            }
+          }
+        }
+
+        .form-row {
+          display: flex;
+          gap: 15px;
+
+          .form-group {
+            flex: 1;
+          }
+        }
+
+        .form-actions {
+          display: flex;
+          justify-content: flex-end;
+          gap: 10px;
+          margin-top: 30px;
+
+          .cancel-btn,
+          .submit-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+          }
+
+          .cancel-btn {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+
+            &:hover {
+              background: #e9ecef;
+            }
+          }
+
+          .submit-btn {
+            background: #007bff;
+            color: white;
+
+            &:hover {
+              background: #0056b3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .categories-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .loading {
+      padding: 40px;
+      text-align: center;
+      color: #666;
+    }
+
+    .error {
+      padding: 20px;
+      color: #dc3545;
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+      margin: 20px;
+    }
+
+    .categories-table {
+      .table-header {
+        display: flex;
+        background: #f8f9fa;
+        border-bottom: 1px solid #eee;
+        font-weight: 500;
+        padding: 15px 20px;
+
+        .col-name {
+          flex: 2;
+        }
+
+        .col-description {
+          flex: 3;
+        }
+
+        .col-gigs,
+        .col-status,
+        .col-actions {
+          flex: 1;
+          text-align: center;
+        }
+      }
+
+      .table-row {
+        display: flex;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        align-items: center;
+
+        &:hover {
+          background: #f8f9fa;
+        }
+
+        .col-name {
+          flex: 2;
+
+          .category-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .category-icon {
+              font-size: 20px;
+            }
+
+            h4 {
+              margin: 0 0 5px;
+              font-size: 16px;
+              color: #333;
+            }
+
+            small {
+              color: #666;
+            }
+          }
+        }
+
+        .col-description {
+          flex: 3;
+          color: #666;
+          font-size: 14px;
+        }
+
+        .col-gigs {
+          flex: 1;
+          text-align: center;
+
+          .gig-count {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #e9ecef;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
+
+        .col-status {
+          flex: 1;
+          text-align: center;
+
+          .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+
+            &.active {
+              background: #d4edda;
+              color: #155724;
+            }
+
+            &.inactive {
+              background: #f8d7da;
+              color: #721c24;
+            }
+          }
+        }
+
+        .col-actions {
+          flex: 1;
+          text-align: center;
+
+          button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+            margin: 0 2px;
+            border-radius: 4px;
+            transition: background 0.3s;
+
+            &:hover {
+              background: #e9ecef;
+            }
+
+            &.delete-btn:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+
+      .no-data {
+        padding: 40px;
+        text-align: center;
+        color: #666;
+      }
+    }
+  }
+}

@@ -1,0 +1,554 @@
+.myGigs {
+  display: flex;
+  justify-content: center;
+  color: #555;
+  min-height: 80vh;
+
+  .container {
+    width: 1400px;
+    max-width: 95%;
+    padding: 50px 20px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .title {
+        h1 {
+          margin: 0 0 10px 0;
+          color: #333;
+          font-size: 2rem;
+        }
+        
+        p {
+          margin: 0;
+          color: #777;
+          font-size: 1rem;
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .filters {
+          .status-filter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+
+            &:focus {
+              outline: none;
+              border-color: #1dbf73;
+            }
+          }
+        }
+
+        .add-gig-btn {
+          padding: 10px 20px;
+          background: #1dbf73;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: 500;
+          transition: background 0.3s;
+          white-space: nowrap;
+
+          &:hover {
+            background: #17a85b;
+          }
+        }
+      }
+    }
+
+    // Loading and error states
+    .loading, .error {
+      text-align: center;
+      padding: 40px;
+      font-size: 1.1rem;
+      
+      button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #1dbf73;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        
+        &:hover {
+          background: #17a85b;
+        }
+      }
+    }
+
+    // Auth required and not seller states
+    .auth-required, .not-seller {
+      text-align: center;
+      padding: 60px 20px;
+      
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #666;
+      }
+      
+      .login-btn, .browse-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #1dbf73;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 500;
+        transition: background 0.3s;
+        
+        &:hover {
+          background: #17a85b;
+        }
+      }
+    }
+
+    .gigs-table {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+          background: #f8f9fa;
+          
+          th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #eee;
+          }
+        }
+
+        tbody {
+          tr {
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+
+            &:hover {
+              background-color: #f8f9fa;
+            }
+
+            td {
+              padding: 15px;
+              vertical-align: middle;
+
+              .gig-info {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                .gig-image {
+                  width: 60px;
+                  height: 40px;
+                  object-fit: cover;
+                  border-radius: 5px;
+                  border: 1px solid #eee;
+                }
+
+                .gig-details {
+                  h4 {
+                    margin: 0 0 5px 0;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #333;
+                    max-width: 250px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+
+                  .gig-short-desc {
+                    margin: 0;
+                    font-size: 12px;
+                    color: #777;
+                    max-width: 250px;
+                  }
+                }
+              }
+
+              .category {
+                display: inline-block;
+                padding: 4px 8px;
+                background: #f0f0f0;
+                color: #666;
+                border-radius: 12px;
+                font-size: 12px;
+                font-weight: 500;
+              }
+
+              &.price {
+                font-weight: 600;
+                color: #1dbf73;
+                font-size: 16px;
+              }
+
+              .status-badge {
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 12px;
+                font-weight: 500;
+                text-transform: capitalize;
+
+                &.active {
+                  background: #d4edda;
+                  color: #155724;
+                }
+
+                &.paused {
+                  background: #fff3cd;
+                  color: #856404;
+                }
+
+                &.draft {
+                  background: #f8d7da;
+                  color: #721c24;
+                }
+              }
+
+              .orders-count {
+                text-align: center;
+
+                .count {
+                  display: block;
+                  font-weight: 600;
+                  color: #333;
+                  font-size: 16px;
+                }
+
+                small {
+                  color: #777;
+                  font-size: 11px;
+                }
+              }
+
+              .actions {
+                display: flex;
+                gap: 8px;
+
+                .view-btn, .edit-btn, .delete-btn {
+                  padding: 8px 12px;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  text-decoration: none;
+                  transition: all 0.2s;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+
+                .view-btn {
+                  background: #e3f2fd;
+                  color: #1976d2;
+
+                  &:hover {
+                    background: #bbdefb;
+                  }
+                }
+
+                .edit-btn {
+                  background: #fff3e0;
+                  color: #f57c00;
+
+                  &:hover {
+                    background: #ffe0b2;
+                  }
+
+                  &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                  }
+                }
+
+                .delete-btn {
+                  background: #ffebee;
+                  color: #d32f2f;
+
+                  &:hover {
+                    background: #ffcdd2;
+                  }
+
+                  &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+
+        button {
+          padding: 8px 16px;
+          border: 1px solid #ddd;
+          background: white;
+          color: #333;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover:not(:disabled) {
+            background: #1dbf73;
+            color: white;
+            border-color: #1dbf73;
+          }
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+
+        .page-info {
+          font-weight: 500;
+          color: #555;
+        }
+      }
+    }
+
+    .no-gigs {
+      text-align: center;
+      padding: 60px 20px;
+
+      .empty-state {
+        max-width: 400px;
+        margin: 0 auto;
+
+        h3 {
+          color: #333;
+          margin-bottom: 15px;
+          font-size: 1.5rem;
+        }
+
+        p {
+          color: #666;
+          margin-bottom: 25px;
+          line-height: 1.6;
+        }
+
+        .create-btn {
+          display: inline-block;
+          padding: 12px 25px;
+          background: #1dbf73;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: 500;
+          transition: background 0.3s;
+
+          &:hover {
+            background: #17a85b;
+          }
+        }
+      }
+    }
+
+    // Modal styles
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+
+      .modal {
+        background: white;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+        .modal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          border-bottom: 1px solid #eee;
+
+          h3 {
+            margin: 0;
+            color: #333;
+          }
+
+          .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+              color: #333;
+            }
+          }
+        }
+
+        .modal-body {
+          padding: 20px;
+
+          .form-group {
+            margin-bottom: 20px;
+
+            label {
+              display: block;
+              margin-bottom: 8px;
+              font-weight: 500;
+              color: #333;
+            }
+
+            input, textarea, select {
+              width: 100%;
+              padding: 10px;
+              border: 2px solid #ddd;
+              border-radius: 5px;
+              font-size: 14px;
+              transition: border-color 0.3s;
+
+              &:focus {
+                outline: none;
+                border-color: #1dbf73;
+              }
+            }
+
+            textarea {
+              resize: vertical;
+              min-height: 80px;
+            }
+          }
+
+          .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+
+            button {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-weight: 500;
+              transition: all 0.2s;
+
+              &[type="button"] {
+                background: #f8f9fa;
+                color: #333;
+                border: 1px solid #ddd;
+
+                &:hover {
+                  background: #e9ecef;
+                }
+              }
+
+              &[type="submit"] {
+                background: #1dbf73;
+                color: white;
+
+                &:hover:not(:disabled) {
+                  background: #17a85b;
+                }
+
+                &:disabled {
+                  opacity: 0.6;
+                  cursor: not-allowed;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Responsive design
+    @media (max-width: 768px) {
+      padding: 30px 15px;
+
+      .header {
+        flex-direction: column;
+        align-items: stretch;
+
+        .actions {
+          justify-content: stretch;
+          flex-direction: column;
+
+          .filters .status-filter {
+            width: 100%;
+          }
+
+          .add-gig-btn {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+
+      .gigs-table {
+        overflow-x: auto;
+
+        table {
+          min-width: 700px;
+        }
+      }
+
+      .modal {
+        .modal-body {
+          .modal-footer {
+            flex-direction: column;
+
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
